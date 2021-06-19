@@ -12,23 +12,17 @@ import { Room_Custormer } from "./room_custormer.entity";
 @Entity()
 export class Contract {
   @PrimaryGeneratedColumn()
-  @OneToOne(
-    () => PayForMonthContract,
-    payForMotnhContract => payForMotnhContract.contract_Id
-  )
-  @OneToOne(() => Room_Custormer, room_Custormer => room_Custormer.contract_Id)
+  id: number;
+
+  @ManyToOne(() => Custormer, custormer => custormer.contracts)
+  custormerSignContract: Custormer;
+
   @OneToMany(
     () => PayForMonthContract,
-    payForMonthContract => payForMonthContract.contract_Id
+    payForMonthContract => payForMonthContract.contract
   )
-  contract_Id: number;
+  payforMonthContract: PayForMonthContract[];
 
-  @ManyToOne(() => Custormer, custormer => custormer.custormer_Id)
-  personalSigning_Id: number;
-
-  @OneToOne(
-    () => Room_Custormer,
-    room_Custormer => room_Custormer.room_custormer_Id
-  )
-  room_custormer_Id: number;
+  @OneToOne(() => Room_Custormer, room_Custormer => room_Custormer.contract)
+  room_Custormer: Room_Custormer;
 }

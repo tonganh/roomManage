@@ -13,15 +13,14 @@ import { Room } from "./room.entity";
 @Entity()
 export class Room_Custormer {
   @PrimaryGeneratedColumn()
-  @ManyToOne(() => Custormer, custormer => custormer.custormer_Id)
-  room_custormer_Id: number;
+  id: number;
 
-  @ManyToOne(() => Room, room => room.room_Id)
-  room_Id: number;
+  @ManyToOne(() => Room, room => room.contracts)
+  room: Room;
 
-  @OneToOne(() => Contract, contract => contract.contract_Id)
-  contract_Id: number;
+  @OneToOne(() => Contract, contract => contract.room_Custormer)
+  contract: Contract;
 
-  @OneToMany(() => Custormer, custormer => custormer.custormer_Id)
-  custormers: Custormer[];
+  @OneToMany(() => Custormer, custormer => custormer.id)
+  custormer: Custormer[];
 }

@@ -1,16 +1,20 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Contract } from "./contract.entity";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Room_Custormer } from "./room_custormer.entity";
 
 @Entity()
 export class Custormer {
   @PrimaryGeneratedColumn()
-  custormer_Id: number;
+  id: number;
 
-  @ManyToOne(
-    () => Room_Custormer,
-    room_Customer => room_Customer.room_custormer_Id
-  )
-  room_custormer_Id: number;
+  @ManyToOne(() => Room_Custormer, room_Customer => room_Customer.custormer)
+  room_Custormer: Room_Custormer;
 
   @Column()
   name: string;
@@ -23,4 +27,7 @@ export class Custormer {
 
   @Column()
   hometown: string;
+
+  @OneToMany(() => Contract, contract => contract.custormerSignContract)
+  contracts: Contract[];
 }

@@ -12,8 +12,8 @@ export class PayForMonthContract {
   @PrimaryGeneratedColumn()
   payMonth_Id: number;
 
-  @ManyToOne(() => Contract, contract => contract.contract_Id)
-  contract_Id: number;
+  @ManyToOne(() => Contract, contract => contract.id)
+  contract: Contract;
 
   @Column()
   totalElectric: number;

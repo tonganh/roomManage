@@ -4,7 +4,7 @@ import { Room } from "./room.entity";
 @Entity()
 export class Building {
   @PrimaryGeneratedColumn()
-  building_Id: number;
+  id: number;
 
   @Column()
   name: string;
