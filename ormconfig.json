@@ -4,7 +4,7 @@
   "port": 5432,
   "username": "postgres",
   "password": "lovehangga",
-  "database": "test",
+  "database": "roomManage",
   "synchronize": true,
   "entities": [
      "src/entities/*.ts"

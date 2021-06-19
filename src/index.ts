@@ -1,6 +1,6 @@
 import express, { Response, Request } from "express";
 import { createConnection } from "typeorm";
-import { User } from "./entities/user";
+import { User } from "./entities/user.entity";
 const port = 5000;
 createConnection()
   .then(async connection => {
